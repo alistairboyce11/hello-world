@@ -1,0 +1,13 @@
+clear
+pdflatex NA_TOMO_BOYCE_paper
+bibtex NA_TOMO_BOYCE_paper
+pdflatex NA_TOMO_BOYCE_paper
+pdflatex NA_TOMO_BOYCE_paper
+rm *.blg
+rm *.aux
+rm *.log
+rm *.bbl
+./TeXcount_3_0/texcount.pl NA_TOMO_BOYCE_paper.tex
+
+open NA_TOMO_BOYCE_paper.pdf
+

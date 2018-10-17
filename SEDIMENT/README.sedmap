@@ -1,0 +1,92 @@
+A GLOBAL DIGITAL MAP OF SEDIMENT THICKNESS AT 1x1 deg
+
+SEDIMENT MAP (sedmap):
+------------
+This global sediment map is digitized on a 1x1 deg grid. 
+In the oceans, published digital high-resolution maps were
+averaged (e.g. Pacific, Indian and South Atlantic oceans). 
+In area for which such files are not available (e.g. Arctic
+and North Altantic ocean), the sediment thickness was hand-
+digitized using atlases and maps. The sediments in most of the
+continental areas (incl. shelves) were obtained by digitizing the
+Tectonic Map of the World provided by the EXXON rpoduction research
+group (1985).
+
+The file is sedmap.map and is specified the following way: 
+the values corresponds to the cells with midpoints
+ 89.5N 179.5W, 89.5 178.5W, 89.5 177.5W aso.
+The last value corresponds to 89.5S 179.5E.
+A postscript file of the map is sedmap.ps.
+Values are km.
+
+Preparing the map for input into GMT:
+------------------------------------
+A file which is more straight forward to be used as input
+for GMT (but is significantly larger!) is sedmap.gmt.gz. 
+Ftp this file onto your UNIX machine,
+having the binary option switched on. Then type:
+gunzip sedmap.gmt.
+
+The uncompressed file will be about 2.5Mbyte large.
+This file will contain 64800 lines where each one
+specifies a cell with: longitude, latitude, value.
+To convert the file sedmap.map into GMT input format,
+use the fortran code map2gmt.f.
+On unix machines, simply type:
+f77 map2gmt.f -o map2gmt
+map2gmt
+
+this sequence reads in sedmap.map and
+creates the file sedmap.gmt.
+
+SEDIMENT MODEL (tarfile):
+--------------
+We have also compiled elastic properties (rho, vp, vs) 
+which are given in separate maps on the same 1x1 deg grid.
+Since these parameters change rapidly with depth, it became
+necessary to divide the sediment column into three layers,
+where the top layer is up to 2km thick, the second up to 5km.
+
+In the oceans, compressional velocities vp were calculated using 
+published velocity functions, where available. On continents, we 
+adopt the values given in global crustal model CRUST5.1 (2.1-2.5km/s 
+in the first 2km, then 3.2-5.3km/s).
+
+Shear velocities and densities were calculated using the curves of 
+Ludwig, Nafe and Drake.
+(Seismic Refraction, in "The Sea, Vol. 4, Ideas and Observations on
+Progress in the Study of the Seas", A.E. Maxwell (ed.),
+Wiley-Interscience, New York, 1970.)
+
+All 12 files (3 for each of thickness, vp, vs, rho) are assembled in
+the tarfile sedmaps.tar. This file has been compressed using the
+UNIX compression gzip. Please use the binary option to ftp
+the tarfile, then type: gunzip sedmaps.tar on your UNIX machine.
+You can extract all files by typing: tar -xvf sedmaps.tar.
+
+The format is the same as for the sediment map:
+360x180 numbers, where the first one is assigned to the cell
+with midpoint 89.5N 179.5W, then 89.5N 179.5W, aso.
+
+Please let us know if you have any problems.
+
+REFERENCE:
+---------
+If you use this map or model, please use the following reference:
+G. Laske and G. Masters, A Global Digital Map of Sediment Thickness,
+EOS Trans. AGU, 78, F483, 1997.
+
+PLEASE PROVIDE FEEDBACK:
+-----------------------
+Also, as this model is evolving, we depend on your feedback. 
+We are curious to know what you use this map for, so
+please let us know and please send us
+suggestions and/or corrections for the model. 
+(glaske@ucsd.edu or gmasters@ucsd.edu).
+
+WEB PAGE:
+--------
+Please also check our Web page:
+http://mahi.ucsd.edu/Gabi/sediment.html 
+
+Gabi Laske and Guy Masters
