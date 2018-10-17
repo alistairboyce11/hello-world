@@ -1,0 +1,36 @@
+> Navigate to a directory locally to edit in >> cd ~/Google_drive/AB_GITHUB
+
+> Copy the directory from the URL on githib (clone) >> git clone https://github.com/alistairboyce11/hello-world [local_directory_name]
+
+> move into that directory >> cd hello-world
+
+> check status of the repository (directory or folder) >> git status
+
+> check the branch structure >> git branch
+
+> make a new branch to edit >> git branch AB_working
+
+> check branches again >> git branch
+
+> move to edit the new branch not the master >> git checkout AB_working
+
+> check branches again to be in the editable one >> git branch
+
+> edit files in the repository >> mate TEMP.txt >> Command-S
+
+> add a file from another place on your computer to the repository (directory) >> cp /usr/local/bin/putinP.sh .
+
+> add the changes to TEMP.txt and the new file putinP.sh into the next commit >> git add putinP.sh TEMP.txt 
+
+> check git status to see changes ready for commit >> git status
+
+> submit the commit to the local branch >> git commit -a -m "Added some comments to TEMP.txt and added putinP.sh file"
+
+> check git status to see changes commited to current branch (AB_working) >> git status
+
+> publish these commits to the online branch (AB_working) of the repository (hello-world) >> git push --set-upstream https://github.com/alistairboyce11/hello-world AB_working
+
+> go to https://github.com/alistairboyce11/hello-world and open a new pull request to bring the changes into the master branch.
+
+> Check what happens in the merge pull request and confirm it!
+
