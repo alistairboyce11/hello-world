@@ -1,0 +1,72 @@
+A GLOBAL CRUSTAL THICKNESS MAP AT 1x1 deg
+(currently covers eurasia only)
+
+CRUSTAL THICKNESS MAP (eurocrs.map):
+------------
+This global crustal thickness map is digitized on a 1x1 deg grid. 
+The thickness in Eurasia summarizes values obtained from
+Ziegler (1990), Blundell et al. (1992), Meissner et al. (1987),
+Seber et al. (1997), Beloussov et al. (1988), and Li and Mooney (1997).
+
+The format is the same as for the sediment map:
+360x180 numbers, where the first one is assigned to the cell
+with midpoint 89.5N 179.5W, then 89.5N 179.5W, aso.
+The last value corresponds to 89.5S 179.5E.
+
+A postscript file of the map is euro.newcrs.ps.
+(This postscript file only covers a small section of the map).
+Values are km.
+
+A fortran routine to read the map:
+----------------------------------
+getpoint.f has 2 subroutines, one reads the map and one
+returns the thickness (in km) at a specific point.
+(remember that the map goes from -180 to 180 in longitude
+and from 90 to -90 in latitude).
+The routine returns zero for cells with no information.       
+On non-UNIX machine, please compile the code using you fortran
+compiler (e.g. f77 getpoint.f -o getpoint for a UNIX machine with
+fortran 77 compiler).
+
+An executable for UNIX machines is getpoint (please remember
+to set the binary option during ftp, then type: chmod +x getpoint).
+
+Preparing the map for input into GMT:
+------------------------------------
+There is another fortran routine that creates a file that
+can be read into GMT (map2gmt.f). Please edit this code
+and change the following lines:
+
+      open(8,file='sedmap.map')
+      open(9,file='sedmap.gmt')
+
+to 
+
+      open(8,file='eurocrs.map')
+      open(9,file='eurocrs.gmt')
+
+
+On unix machines, simply type:
+f77 map2gmt.f -o map2gmt
+map2gmt
+
+this sequence reads in eurocrs.map and
+creates the file eurocrs.gmt.
+
+
+Please let us know if you have any problems.
+
+PLEASE PROVIDE FEEDBACK:
+-----------------------
+Also, as this model is evolving, we depend on your feedback. 
+We are curious to know what you use this map for, so
+please let us know and please send us
+suggestions and/or corrections for the model. 
+(glaske@ucsd.edu or gmasters@ucsd.edu).
+
+WEB PAGE:
+--------
+Please also check our Web page:
+http://mahi.ucsd.edu/Gabi/sediment.html 
+
+Gabi Laske and Guy Masters
